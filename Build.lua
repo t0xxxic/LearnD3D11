@@ -28,13 +28,23 @@ project "render"
    staticruntime "off"
    toolset "msc"
 
-   files { "src/**.h", "src/**.cpp" }
+   files { "src/**.h", "src/**.cpp", "src/**.vs", "src/**.ps" }
 
    includedirs
    {
       "src",
       "include/",
    }
+
+   -- Group shaders into a VS filter/folder called "Shaders"
+   vpaths {
+       ["Shaders"] = { "**.vs", "**.ps" }
+   }
+
+   -- Disable compilation of shader files in VS
+   filter { "files:**.vs or files:**.ps" }
+       buildaction "None"     -- Mark file as "Does not participate in build"
+   
 
    targetdir ("./bin")
    objdir ("./bin-int/" .. OutputDir .. "/%{prj.name}")

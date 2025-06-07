@@ -2,8 +2,10 @@
 .vs/
 Bin/
 Bin-int/
+Obj/
 Packages/
 extras/
+Binaries/
 
 # Files
 *.vcxproj
